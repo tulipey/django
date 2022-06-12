@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        {% block title %}
+        <title>Bibliothèque Locale</title>
+        {% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    </head>
+    <body>
+        
+        {% block menu %}
+
+        <h1>R&T DEV</h1>
+
+            {% block sidebar %}
+            <h2>Menu</h2>
+            <ul id="menu">
+                <li><a href="{% url 'index' %}">Home</a> </li>
+                <li><a href="{% url 'machines' %}">Machines</a></li>
+                <li><a href="{% url 'employes' %}">Employés</a></li>
+                <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
+                <li><a href="{% url 'add-employe' %}">Ajouter un employé</a></li>
+            </ul>
+            {% endblock %}
+        {% endblock %}
+
+        {% load static %}
+        <img src="{% static 'td1app/image/valentin.jpeg' %}" alt="logo" style="width: 200px;height: 200px;">
+        <img src="{% static 'td1app/image/imame.jpg' %}" alt="logo" style="width: 130px;height: 200px;">
+
+        {% block content %}
+            First
+        {% endblock %}
+
+    </body>
+</html>
