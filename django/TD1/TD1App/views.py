@@ -55,12 +55,12 @@ def machine_list_view(request):
 # Infrastructure
 
 def infrastructure_list_view(request):
-    machines = Infrastructure.objects.all()
+    infrastructures = Infrastructure.objects.all()
     context = {'Infrastructures': infrastructures}
     return render(request, 'td1app/infrastructure_list.html', context)
 
 def Infrastructure_detail_view(request, pk):
-	machine = get_object_or_404(Infrastructure, id=pk)
+	infrastructure = get_object_or_404(Infrastructure, id=pk)
 	context = {'infrastructure': infrastructure}
 	return render(request, 'td1app/infrastructure_detail.html', context)
 
