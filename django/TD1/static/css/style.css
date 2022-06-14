@@ -1,3 +1,23 @@
-h1 {
-    color: red;
+.map__image {
+    width: 50%;
+}
+
+.map__image path {
+    fill: gray;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.land {
+    border: 2px solid black;
+}
+
+body {
+    background-color: None;
+}
+
+.map__list a{
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
 }
