@@ -32,3 +32,14 @@ class AddEmployeForm(forms.Form):
             raise ValidationError(("Erreur de format pour le champ nom"))
 
         return data
+
+class AddInfrastructureForm(forms.Form):
+
+    nom = forms.CharField(required=True, label="nom d'infrastructure")
+
+    def clean_nom(self):
+        data = self.cleaned_data["nom"]
+        if len(data) > 32:
+            raise ValidationError(("Erreur de format pour le champ nom"))
+
+        return data

@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h1>Nom:{{ infrastructure.entreprise }}</h1>
+    <p><strong>Id</strong> : {{ infrastructure.id_i }}</p>
+    <p><strong>Responsable</strong> : {{ infrastructure.responsable }}</p>
+    <p> <strong>Date de entretien :</strong> {{ infrastructure.entretien }}</p>
+    <p><strong> Département :</strong> {{ infrastructure.departement }}</p>
+    
+{% endblock %}

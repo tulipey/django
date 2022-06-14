@@ -1,3 +1,4 @@
+
 from typing import Type
 from django.db import models
 from datetime import datetime
@@ -30,7 +31,7 @@ class Employe (models.Model):
 
 class Compte (models.Model):
 
-    TYPE = (
+    CHOI = (
         ('Technicien', ('Tecnicien')),
         ('User', ('Utilisateur')),
     )
@@ -39,7 +40,7 @@ class Compte (models.Model):
     nom = models.CharField (max_length=17)
     prenom = models.CharField (max_length=20)
     password = models.CharField (max_length=20)
-    poste = models.CharField (max_length=15, choices=TYPE, default='User')
+    poste = models.CharField (max_length=15, choices=CHOI, default='User')
     email = models.EmailField (max_length=50)
 
 class Infrastructure (models.Model):
@@ -47,17 +48,20 @@ class Infrastructure (models.Model):
     id_i = models.AutoField (primary_key=True, editable=False)
     entreprise = models.CharField (max_length=30)
     responsable = models.CharField (max_length=17)
+    Entretien = models.DateField (default= datetime.now())
+    departement = models.CharField (max_length=40)
 
 class Equipement (models.Model):
 
-    TYPE = (
-        ('Ordinateur'), ('Ordinateur'),
-        ('Switch'), ('Commutateur'),
-        ('Routeur'), ('Router'),
+    CHOIX = (
+        ('Ordinateur', ('Ordinateur')),
+        ('Serveur', ('Serveur')),
+        ('Switch', ('Commutateur')),
+        ('Routeur', ('Router')),
     )
 
     id_e = models.AutoField (primary_key=True, editable=False)
-    Type = models.CharField (max_length=15, choices=TYPE, default='Ordinateur')
+    Type = models.CharField (max_length=15, choices=CHOIX, default='Ordinateur')
     infra = models.CharField (max_length=30)
     user = models.CharField (max_length=17)
     maj = models.DateField (default = datetime.now())

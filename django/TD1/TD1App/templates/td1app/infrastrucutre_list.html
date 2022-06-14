@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Liste des Infrastructures</h1>
+    {% if Infrastructures %}
+    <u1>
+        {% for infrastucture in infrastructures %}
+            <li>
+                <a href="{% url 'infrastructure-detail' infrastucture.id_i %}">
+                    {{ infrastucture.id_i }}</a> ({{ infrastucture.entreprise }})
+            </li>
+        {% endfor %}
+    </u1>
+    {% else %}
+        <p> Il n\'y a pas d'infrastructure,</p>
+    {% endif %}
+{% endblock %}

@@ -9,5 +9,8 @@ urlpatterns = [
 	path('employe/<pk>', views.employe_detail_view, name = 'employe-detail'),
 	path('add-machine', views.machine_add_from, name='add-machine'),
 	path('add-employe', views.employe_add_from, name='add-employe'),
+	path('infrastructures/', views.infra_list_view, name='infrastructures'),
+	path('infrastructure/<pk>', views.infra_detail_view, name = 'infrastructure-detail'),
+	path('add-infrastructure', views.infra_add_from, name='infrastructure'),
 ]
 
