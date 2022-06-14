@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         {% block title %}
-        <title>Bibliothèque Locale</title>
+        <title>PAGE TEST</title>
         {% endblock %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,69 +18,13 @@
                 <div class="container-fluid">
                   <a class="navbar-brand ms-3">
                     {% load static %}
-                    <img src="{% static 'td1app/image/logo.png' %}" alt="logo" style="width: 200px;height: 125px;">
+                    <img src="{% static 'td1app/image/logo.png' %}" alt="logo" style="width: 250px;height: 125px;">
                   </a>
                   <form class="d-flex me-5" >
-                    <a class="nav-link active" aria-current="page" href="index.html">Infrastructures</a>
+                    <a class="nav-link active" aria-current="page" href="infrastructure">Infrastructures</a>
                   </form>
                 </div>
               </nav>
         </header>
-        {% block menu %}
-
-        <h1>R&T DEV</h1>
-
-            {% block sidebar %}
-            <h2>Menu</h2>
-            <ul id="menu">
-                <li><a href="{% url 'index' %}">Home</a> </li>
-                <li><a href="{% url 'machines' %}">Machines</a></li>
-                <li><a href="{% url 'employes' %}">Employés</a></li>
-                <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
-                <li><a href="{% url 'add-employe' %}">Ajouter un employé</a></li>
-                <li><a href="{% url 'infrastructures' %}">Infrastructures</a></li>
-            </ul>
-            {% endblock %}
-        {% endblock %}
-            <div class="row">
-                <div class="col-3">
-                
-                </div>
-                <div class="col-6">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Entreprise</th>
-                            <th scope="col">Responsable</th>
-                            <th scope="col">Entretien</th>
-                            <th scope="col">Supprimer</th>
-                            <th scope="col">Inspecter</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                                <tr>
-                                    <th scope="row" ></th>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        {% load static %}
-        <img src="{% static 'td1app/image/valentin.jpeg' %}" alt="logo" style="width: 200px;height: 200px;">
-        <img src="{% static 'td1app/image/imame.jpg' %}" alt="logo" style="width: 130px;height: 200px;">
-
-        {% block content %}
-            
-        {% endblock %}
-
     </body>
 </html>

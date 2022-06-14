@@ -1,66 +1,22 @@
 from turtle import pd
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from TD1App.models import Infrastructure, Machine, Employe
-from TD1App.forms import AddMachineForm, AddEmployeForm, AddInfrastructureForm
+from TD1App.models import Infrastructure, Equipement, Compte
+from TD1App.forms import AddEquipementForm, AddInfrastructureForm, AddCompteForm
 
 def index(request):
 	context = {}
 	return render(request, 'index.html', context)
 
-def machine_detail_view(request, pk):
-	machine = get_object_or_404(Machine, id=pk)
-	context = {'machine': machine}
-	return render(request, 'td1app/machine_detail.html', context)
-
-def employe_list_view(request):
-    employes = Employe.objects.all()
-    context = {'employes': employes}
-    return render(request, 'td1app/employe_list.html', context)
-
-def employe_detail_view(request, pk):
-	employe = get_object_or_404(Employe, id=pk)
-	context = {'employe': employe}
-	return render(request, 'td1app/employe_detail.html', context)
-
-def machine_add_from(request):
-    if request.method == 'POST':
-        form = AddMachineForm(request.POST or None)
-        if form.is_valid():
-            new_machine = Machine(nom=form.cleaned_data['nom'])
-            new_machine.save()
-            return redirect('machines')
-    else :
-        form = AddMachineForm()
-        context = {'form': form}
-        return render(request, 'td1app/machine_add.html', context)
-
-def employe_add_from(request):
-    if request.method == 'POST':
-        form = AddEmployeForm(request.POST or None)
-        if form.is_valid():
-            new_machine = Employe(nom=form.cleaned_data['nom'])
-            new_machine.save()
-            return redirect('employes')
-    else :
-        form = AddEmployeForm()
-        context = {'form': form}
-        return render(request, 'td1app/employe_add.html', context)
-
-def machine_list_view(request):
-    machines = Machine.objects.all()
-    context = {'machines': machines}
-    return render(request, 'td1app/machine_list.html', context)
-
 # Infrastructure
 
 def infrastructure_list_view(request):
     infrastructures = Infrastructure.objects.all()
-    context = {'Infrastructures': infrastructures}
+    context = {'infrastructures': infrastructures}
     return render(request, 'td1app/infrastructure_list.html', context)
 
-def Infrastructure_detail_view(request, pk):
-	infrastructure = get_object_or_404(Infrastructure, id=pk)
+def infrastructure_detail_view(request, pk):
+	infrastructure = get_object_or_404(Infrastructure, id_i=pk)
 	context = {'infrastructure': infrastructure}
 	return render(request, 'td1app/infrastructure_detail.html', context)
 
@@ -68,10 +24,29 @@ def infrastructure_add_from(request):
     if request.method == 'POST':
         form = AddInfrastructureForm(request.POST or None)
         if form.is_valid():
-            new_machine = Infrastructure(nom=form.cleaned_data['nom'])
-            new_machine.save()
+            new_infrastructure = Infrastructure(entreprise=form.cleaned_data['entreprise'])
+            new_infrastructure.save()
             return redirect('infrastructures')
     else :
         form = AddInfrastructureForm()
         context = {'form': form}
         return render(request, 'td1app/infrastructure_add.html', context)
+
+# Equipement
+
+def equipement_list_view(request):
+    equipements = Equipement.objects.all(id_i=pk)
+    context = {'equipement': equipements}
+    return render(request, 'td1app/infrastructure_detail.html', context)
+
+def equipement_add_from(request):
+    if request.method == 'POST':
+        form = AddEquipementForm(request.POST or None)
+        if form.is_valid():
+            new_machine = Equipement(infrastructure=form.cleaned_data['infra'])
+            new_machine.save()
+            return redirect('infrastructures')
+    else :
+        form = AddEquipementForm()
+        context = {'form': form}
+        return render(request, 'td1app/equipement_add.html', context)

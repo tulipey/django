@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Infrastructure, Machine, Employe
+from .models import Compte, Infrastructure, Equipement
 
-admin.site.register(Machine)
-admin.site.register(Employe)
 admin.site.register(Infrastructure)
+admin.site.register(Equipement)
+admin.site.register(Compte)

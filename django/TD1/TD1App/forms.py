@@ -1,41 +1,46 @@
 from django import forms
 from django.forms import ValidationError
-from TD1App.models import Machine, Employe
+ 
 
+# Infrastructure
 
-class createMachineFrom(forms.Form):
-    nom = forms.CharField(label="Nom de la machine")
-    def clean_nom(self):
-        data = self.cleaned_data["nom"]
-        if len(data) != 6:
-            raise ValidationError(("Erreur de format pour le champ 'nom'"))
-        return data
+class AddInfrastructureForm(forms.Form):
 
-class AddMachineForm(forms.Form):
+    entreprise = forms.CharField(required=True, label="nom d'infrastructure")
+    responsable = forms.CharField(required=True, label="nom du responsable")
+    departement = forms.CharField(required=True, label="nom du departement")
 
-    nom = forms.CharField(required=True, label='nom de la machine')
 
     def clean_nom(self):
-        data = self.cleaned_data["nom"]
-        if len(data)> 32:
-            raise ValidationError(("Erreur de format pour le champ nom"))
-
-        return data
-
-class AddEmployeForm(forms.Form):
-
-    nom = forms.CharField(required=True, label='nom employé')
-
-    def clean_nom(self):
-        data = self.cleaned_data["nom"]
+        data = self.cleaned_data["entreprise"]
         if len(data) > 32:
             raise ValidationError(("Erreur de format pour le champ nom"))
 
         return data
 
-class AddInfrastructureForm(forms.Form):
+# Equipement
 
-    nom = forms.CharField(required=True, label="nom d'infrastructure")
+class AddEquipementForm(forms.Form):
+
+    infra = forms.CharField(required=True, label="nom d'infrastructure")
+    user = forms.CharField(required=True, label="nom de l'utilisateur")
+
+
+    def clean_nom(self):
+        data = self.cleaned_data["infra"]
+        if len(data) > 32:
+            raise ValidationError(("Erreur de format pour le champ nom"))
+
+        return data
+
+# Compte
+
+class AddCompteForm(forms.Form):
+
+    nom = forms.CharField(required=True, label="nom l'utilisateur")
+    prenom = forms.CharField(required=True, label="prenom de l'utilisateur")
+    email = forms.EmailField(required=True, label="email de l'utilisateur")
+
 
     def clean_nom(self):
         data = self.cleaned_data["nom"]

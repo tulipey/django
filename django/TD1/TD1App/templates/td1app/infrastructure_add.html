@@ -1,9 +1,9 @@
-{% extends "index.html" %}
+{% extends "infrastructure.html" %}
 
 {% block content %}
 <form method="post">
     {% csrf_token %}
-    {{ form.nom }}
+    {{ form.entreprise }}
     <input type="submit" value="Submit">
 </form>
 {% endblock %}

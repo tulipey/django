@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Infrastructures</title>
+</head>
+<body style="background-color: gray;">
+    <header style="border-bottom: 5px solid;">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand ms-3">
+                {% load static %}
+                <img src="{% static 'td1app/image/logo.png' %}" alt="logo" style="width: 250px;height: 125px;">
+              </a>
+              <form class="d-flex me-5" >
+                <a class="nav-link active" aria-current="page" href="infrastructure">Infrastructures</a>
+              </form>
+            </div>
+        </nav>
+    </header>
+    <div class="row mt-5 ms-3">
+        <div class="col-3" style="border-right: 3px solid;">
+            <h1 style="background-color: whitesmoke;"> Infrastructures</h1>
+            
+        </div>
+
+        <div class="col-6" >
+            <table class="table" style="background-color: whitesmoke; border: 3px solid;">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">Responsable</th>
+                    <th scope="col">Entretien</th>
+                    <th scope="col">Inspecter</th>
+                    <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                {% if infrastructures %}
+                <tbody>
+                    {% for infrastructure in infrastructures %}
+                        <tr>
+                            <th scope="row" >{{ infrastructure.id_i }}</th>
+                            <td>{{ infrastructure.entreprise }}</td>
+                            <td> {{ infrastructure.responsable }} </td>
+                            <td> {{ infrastructure.entretien }} </td>
+                            <td> <a href="{% url 'infrastructure-detail' infrastructure.id_i %}">
+                                {% load static %}
+                                <img src="{% static 'td1app/image/loupe.png' %}" alt="logo" style="width: 30px;height: 30px;">
+                            </a> </td>
+                            <td>
+                                <a href="">
+                                    {% load static %}
+                                    <img src="{% static 'td1app/image/croix.png' %}" alt="logo" style="width: 30px;height: 30px;">
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                {% endif %}
+            </table>
+            
+        </div>
+    </div>
+</body>
+</html>

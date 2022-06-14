@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>équipement</title>
+</head>
+<body style="background-color: gray">
+    <header>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand ms-3">
+                {% load static %}
+                <img src="{% static 'td1app/image/logo.png' %}" alt="logo" style="width: 250px;height: 125px;">
+              </a>
+              <form class="d-flex me-5" >
+                <a class="nav-link active" aria-current="page" href="../infrastructure">Infrastructures</a>
+              </form>
+            </div>
+        </nav>
+    </header>
+
+    <div class="row mt-5 ms-3">
+        <div class="col-3" style="background-color: whitesmoke; border-right: 3px solid;">
+            <h1>Infrastructures</h1>
+            {% block content %}
+
+            <h1>Nom: {{ infrastructure.entreprise }}</h1>
+            <p><strong>Id</strong> : {{ infrastructure.id_i }}</p>
+            <p><strong>Responsable</strong> : {{ infrastructure.responsable }}</p>
+            <p> <strong>Date de l'entretien :</strong> {{ infrastructure.entretien }}</p>
+            <p><strong> Département :</strong> {{ infrastructure.departement }}</p>
+            
+            {% endblock %}
+        </div>
+
+        <div class="col-6" >
+            <table class="table" style="background-color: whitesmoke; border: 3px solid;">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom entreprise</th>
+                    <th scope="col">Utilisateur</th>
+                    <th scope="col">Mise à jour</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                {% if equipements %}
+                    <tbody>
+                        {% for equipement in equipements %}
+                                
+                            <tr>
+                                <th scope="row" >{{ equipement.id_e }}</th>
+                                <td>{{ equipement.infra }}</td>
+                                <td> {{ equipement.user }} </td>
+                                <td> {{ equipement.maj }} </td>
+                                <td> {{ equipement.Type }} </td>
+                                <td> </td>
+                            </tr>
+                                
+                        {% endfor %}
+                    </tbody>
+                {% endif %}
+            </table>
+            
+        </div>
+    </div>
+</body>
+</html>
